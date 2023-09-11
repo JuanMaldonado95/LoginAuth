@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PerfilComponent } from './auth/perfil/perfil.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +18,18 @@ import { PerfilComponent } from './auth/perfil/perfil.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
+    NbAuthModule.forRoot({
+      strategies: [
+        NbDummyAuthStrategy.setup({
+          name: 'login',
+        }),
+      ],
+      forms: {},
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
