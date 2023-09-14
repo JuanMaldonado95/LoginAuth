@@ -1,0 +1,41 @@
+// import { CanActivateFn } from '@angular/router';
+// import { Inject } from '@angular/core';
+// import { NbAuthService } from '@nebular/auth';
+
+// export const validationLoginGuard: CanActivateFn = (route, state) => {
+//   return true;
+  
+// };
+
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { NbAuthService } from '@nebular/auth';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ValidationLoginGuard implements CanActivate {
+
+  constructor(
+    private authService: NbAuthService,
+    private router: Router
+  ) {
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+    return new Promise(resolve => {
+      this.authService.isAuthenticated().subscribe(resp => {
+        if (!resp) {
+          this.router.navigate(['/auth/login']);
+        }
+        resolve(resp); // siempre es true
+      });
+    });
+
+  }
+
+}

@@ -1,15 +1,16 @@
-<div class="login mt-4 p-4"> 
+<div class="perfil mt-4 p-4">
     <h1>Perfil</h1>
-
     <div class="mb-3">
-        <label for="inputEmail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail">
+        <label class="form-label" for="SelectA">Perfil</label>
+        <select class="form-control" id="SelectA" [(ngModel)]="selectPerfil">
+            <option *ngFor="let value of array">{{value}}</option>
+        </select>
     </div>
-
     <div class="mb-3">
-        <label for="inputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword">
+        <label class="form-label" for="SelectB">Estado</label>
+        <select class="form-control" id="SelectB" [(ngModel)]="selectEstado">
+            <option *ngFor="let value of arrayE" >{{value}}</option>
+        </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Ingresar</button>
+    <button type="submit" class="btn btn-primary" (click)="selectDDLPerfil()">Ingresar</button>
 </div>

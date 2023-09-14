@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
-  NbAuthComponent,
-  NbLoginComponent,
-  NbRegisterComponent,
-  NbLogoutComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ContainerComponent } from './container/container.component';
+import { ValidationLoginGuard } from '../guards/validation-login.guard';
+import { LogoutComponent } from './logout/logout.component';
+import { patch } from '@nebular/theme';
 
 const routes: Routes = [
   {
-    path: 'auth',
-    component: NbAuthComponent,
+    path: '',
+    component: ContainerComponent,
     children: [
       {
         path: '',
-        component: LoginComponent,
+        redirectTo: 'login',
+        pathMatch: 'prefix'
       },
       {
         path: 'login',
@@ -27,24 +28,26 @@ const routes: Routes = [
       {
         path: 'perfil',
         component: PerfilComponent,
+        canActivate: [ValidationLoginGuard],
       },
       {
         path: 'logout',
-        component: NbLogoutComponent,
+        component: LogoutComponent,
+        canActivate: [ValidationLoginGuard]
       },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
+      // {
+      //   path: 'request-password',
+      //   component: NbRequestPasswordComponent,
+      // },
+      // {
+      //   path: 'reset-password',
+      //   component: NbResetPasswordComponent,
+      // },
     ],
   },
   {
-    path: '**',
-    redirectTo: 'auth/login'
+    path:'**',
+    redirectTo:'auth'
   }
 ];
 
