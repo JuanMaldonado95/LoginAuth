@@ -13,6 +13,15 @@ export class HeaderComponent {
     name: "Prueba Nebular Auth"
   };
 
+  // items: any;
+  //  ngOnInit(){
+  //      this.items = [
+  //        {name: 'Action', url: 'app/aaa'},
+  //        {name: 'Another Action', url: 'app/bbb'},
+  //         {name: 'Something else here', url: 'app/ccc'}
+  //        ];
+  //  }
+
   constructor(
     private authService: NbAuthService,
     private router: Router) {

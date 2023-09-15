@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccesoUnoRoutingModule } from './acceso-uno-routing.module';
+import { AccesoUnoComponent } from './acceso-uno.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AccesoUnoComponent],
   imports: [
     CommonModule,
-    AccesoUnoRoutingModule
+    AccesoUnoRoutingModule,
   ]
 })
 export class AccesoUnoModule { }

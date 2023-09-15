@@ -9,14 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, NbAuthSimpleToken } from '@nebular/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { AccesoUnoComponent } from './pages/acceso-uno/acceso-uno.component';
-import { AccesoDosComponent } from './pages/acceso-dos/acceso-dos.component';
 import { NbAlertModule, NbLayoutModule, NbThemeModule, NbUserModule } from '@nebular/theme';
-import { LoginComponent } from './auth/login/login.component';
-import { PrincipalComponent } from './pages/principal/principal.component';
-import { HeaderComponent } from './component/header/header.component';
 import { NbRoleProvider, NbSecurityModule } from '@nebular/security';
 import { RoleProviderService } from './services/role-provider.service';
+import { PrincipalModule } from './pages/principal/principal.module';
 
 class PayloadDummy extends NbAuthSimpleToken {
   protected override payload = {
@@ -27,14 +23,11 @@ class PayloadDummy extends NbAuthSimpleToken {
 @NgModule({
   declarations: [
     AppComponent,
-    AccesoUnoComponent,
-    AccesoDosComponent,
-    PrincipalComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PrincipalModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './principal.component';
-import { ValidationAuthGuard } from 'src/app/guards/validation-auth.guard';
-import { AccesoUnoComponent } from '../acceso-uno/acceso-uno.component';
 
 const routes: Routes = [
   {
@@ -15,9 +13,12 @@ const routes: Routes = [
       },
       {
         path: 'page1',
-        loadChildren:() => import('../acceso-uno/acceso-uno.module').then(m => m.AccesoUnoModule)
+        loadChildren: () => import('../acceso-uno/acceso-uno.module').then(m => m.AccesoUnoModule)
+      },
+      {
+        path: 'page2',
+        loadChildren: () => import('../acceso-dos/acceso-dos.module').then(m => m.AccesoDosModule)
       }
-
     ]
   }
 ];
